@@ -4,9 +4,9 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket         = "billhome-tf-08012022"
+    bucket         = "jenkins-billhome-tf"
     key            = "terraform.tfstate"
     region         = "us-east-1"
-    dynamodb_table = "billhome-tf"
+    dynamodb_table = "terraform-us-east-1"
   }
 }
