@@ -14,7 +14,7 @@ pipeline{
         stage('terraform init and apply - dev'){
             steps{
                 sh returnStatus: true, script: 'terraform workspace new dev'
-                sh "/var/lib/jenkins/workspace/terraform/.terraform/"
+                sh returnStatus: true, script: 'rm /var/lib/jenkins/workspace/terraform/.terraform/'
                 sh "terraform init"
                 sh "terraform apply -var-file=dev.tfvars -auto-approve"
             }
