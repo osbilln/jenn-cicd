@@ -6,8 +6,7 @@ pipeline{
     stages{
         stage('terraform init and apply - dev'){
             steps{
-//                 sh '"terraform workspace new dev"'
-                sh "echo $PATH; which terraform"
+                sh '"terraform workspace new dev"'
                 sh "terraform init"
 
             }
