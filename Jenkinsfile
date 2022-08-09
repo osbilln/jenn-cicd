@@ -7,7 +7,7 @@ pipeline{
         stage('terraform init and apply - dev'){
             steps{
                 sh "terraform workspace new dev"
-                ssh "terraform init"
+                sh "terraform init"
             }
         }
     }
