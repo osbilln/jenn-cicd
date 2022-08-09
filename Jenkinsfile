@@ -7,7 +7,7 @@ pipeline{
         stage('S3 create Bucket'){
             steps{
                 script{
-                    createS3Bucket('billhome-tf-08012022')
+                    createS3Bucket('jenkins-billhome-tf')
                 } 
             }
         }
