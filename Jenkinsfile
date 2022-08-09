@@ -13,7 +13,7 @@ pipeline{
     }
 }
 
-def getTerraformPath {
-    def tfHome = tool name: 'terraform-12', type: 'terraform'
-    return tfHome
-}
+// def getTerraformPath {
+//     def tfHome = tool name: 'terraform-12', type: 'terraform'
+//     return tfHome
+// }
