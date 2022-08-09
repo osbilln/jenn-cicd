@@ -1,14 +1,14 @@
 pipeline{
     agent any
     environment {
-        PATH = "${PATH}:${getTerraformPath()}"
+        PATH = "${PATH}:${getTerraformPath()}:"
     }
     stages{
         stage('terraform init and apply - dev'){
             steps{
 //                 sh '"terraform workspace new dev"'
 //                 sh "terraform init"
-                sh "echo $PATH"
+                sh "echo $PATH; which terraform"
             }
         }
     }
