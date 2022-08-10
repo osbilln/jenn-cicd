@@ -16,7 +16,7 @@ pipeline{
                 sh returnStatus: true, script: 'terraform workspace new dev'
                 sh returnStatus: true, script: 'rm /var/lib/jenkins/workspace/terraform/.terraform/'
                 sh "terraform init"
-                sh "terraform apply -var-file=dev.tfvars -auto-approve"
+                sh "terraform apply -var-file=dev.tfvars -auto-approve -lock=false"
             }
         }
         stage('terraform init and apply - prod'){
@@ -24,7 +24,7 @@ pipeline{
                 sh returnStatus: true, script: 'terraform workspace new prod'
                 sh "/var/lib/jenkins/workspace/terraform/.terraform/"
                 sh "terraform init"
-                sh "terraform apply -var-file=dev.tfvars -auto-approve"
+                sh "terraform apply -var-file=dev.tfvars -auto-approve -lock=false"
             }
         }
     }
