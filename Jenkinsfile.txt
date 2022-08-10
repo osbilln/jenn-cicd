@@ -6,21 +6,25 @@ pipeline{
     stages{
         stage('S3 create Bucket'){
             steps{
-                sh "ansible-playbook s3-bucket.yml"
+                script{
+                    createS3Bucket('jenkins-billhome-tf')
+                } 
             }
         }
         stage('terraform init and apply - dev'){
             steps{
                 sh returnStatus: true, script: 'terraform workspace new dev'
+                sh returnStatus: true, script: 'rm -rf/var/lib/jenkins/workspace/terraform/.terraform/'
                 sh "terraform init"
-                sh "anssible-playbook terraform.yml"
+                sh "terraform apply -var-file=dev.tfvars -auto-approve -lock=false"
             }
         }
         stage('terraform init and apply - prod'){
             steps{
                 sh returnStatus: true, script: 'terraform workspace new prod'
+                sh "rm -rf /var/lib/jenkins/workspace/terraform/.terraform/"
                 sh "terraform init"
-                sh "anssible-playbook terraform.yml -e app_env=prod"
+               sh "terraform apply -var-file=dev.tfvars -auto-approve -lock=false"
             }
         }
     }

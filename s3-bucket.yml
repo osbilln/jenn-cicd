@@ -1,0 +1,7 @@
+---
+- hoss: localhost
+  tasks:
+    - name: Create S3 bucket
+      s3-bucket: 
+        name: jenkins-billhome-tf
+        state: present
