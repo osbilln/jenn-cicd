@@ -23,8 +23,8 @@ pipeline{
         stage('terraform init and apply - prod'){
             steps{
                 sh returnStatus: true, script: 'terraform workspace new prod'
-                sh "rm -rf /var/lib/jenkins/workspace/terraform/.terraform/"
-                // sh "terraform init"
+                // sh "rm -rf /var/lib/jenkins/workspace/terraform/.terraform/"
+                sh "terraform init"
                 // sh "terraform apply -var-file=dev.tfvars -auto-approve -lock=false"
                 sh "terraform destroy -auto-approve -lock=false"                
 
